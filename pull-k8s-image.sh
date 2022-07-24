@@ -2,9 +2,9 @@
 
 k8s_img=$1
 mirror_img=$(echo ${k8s_img}|
-        sed 's/k8s\.gcr\.io/anjia0532\/google-containers/g;s/gcr\.io/anjia0532/g;s/\//\./g;s/ /\n/g;s/anjia0532\./anjia0532\//g' |
+        sed 's/k8s\.gcr\.io/hp-proxy\/google-containers/g;s/gcr\.io/hp-proxy/g;s/\//\./g;s/ /\n/g;s/hp-proxy\./hp-proxy\//g' |
         uniq)
-
+mirror_img=registry.cn-hangzhou.aliyuncs.com/${mirror_img}
 if [ -x "$(command -v docker)" ]; then
   sudo docker pull ${mirror_img}
   sudo docker tag ${mirror_img} ${k8s_img}
